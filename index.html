@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueprint Healthcare Solutions - Smart Health Management Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1dd1a1;
+            --primary-dark: #16a085;
+            --text-dark: #2c3e50;
+            --text-light: #95a5a6;
+            --bg-light: #f5f7fa;
+            --border-color: #e1e8ed;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        /* NAVIGATION */
+        nav {
+            background: var(--white);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(29, 209, 161, 0.3);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--bg-light);
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+        }
+        
+        h1 {
+            font-size: 52px;
+            margin-bottom: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-large {
+            padding: 14px 32px;
+            font-size: 16px;
+        }
+        
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* SECTION */
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* FEATURES GRID */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+        
+        .feature-desc {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* DEVICES SECTION */
+        .devices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .device-card {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .device-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(29, 209, 161, 0.2);
+        }
+        
+        .device-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+        
+        .device-name {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        
+        .device-desc {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        /* TESTIMONIALS */
+        .testimonials {
+            background: var(--white);
+            padding: 60px 20px;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .testimonial {
+            background: var(--bg-light);
+            padding: 32px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .stars {
+            color: #f39c12;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .testimonial-text {
+            color: var(--text-light);
+            margin-bottom: 16px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        /* DASHBOARD PREVIEW */
+        .dashboard-preview {
+            background: var(--white);
+            padding: 48px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 48px;
+        }
+        
+        .dashboard-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+        }
+        
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        
+        .metric-card {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .metric-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        
+        .metric-label {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 40px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .cta-subtitle {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 20px 20px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .devices-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-title {
+                font-size: 28px;
+            }
+            
+            .dashboard-preview {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🏥</div>
+                <span>Blueprint Health</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#devices">Devices</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary">Login</button>
+                <button class="btn btn-primary">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-icon">🏥</div>
+            <h1>Your Health, Simplified</h1>
+            <p class="hero-subtitle">Monitor devices, connect with doctors, manage your health—all in one app. Blueprint Healthcare Solutions brings healthcare to your fingertips.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-large btn-primary">Sign Up Free</button>
+                <button class="btn btn-large btn-secondary">See Demo</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FEATURES SECTION -->
+    <section class="section" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Blueprint Health?</h2>
+            <p class="section-subtitle">Everything you need to manage your health in one intelligent platform</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Real-time Device Monitoring</h3>
+                    <p class="feature-desc">Track all your health devices in one place. Get instant alerts when attention is needed.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍⚕️</div>
+                    <h3 class="feature-title">Telehealth Visits</h3>
+                    <p class="feature-desc">Connect with doctors instantly. Schedule appointments and get consultations anytime, anywhere.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Smart Alerts</h3>
+                    <p class="feature-desc">Receive intelligent notifications about important health changes and device updates.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🆘</div>
+                    <h3 class="feature-title">24/7 Support</h3>
+                    <p class="feature-desc">Expert support team available around the clock. Technical help, device setup, and more.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Health Insights</h3>
+                    <p class="feature-desc">Understand your health patterns with detailed analytics and personalized recommendations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Secure & Private</h3>
+                    <p class="feature-desc">HIPAA compliant encryption. Your health data is protected with enterprise-grade security.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- DEVICES SECTION -->
+    <section class="section" id="devices">
+        <div class="container">
+            <h2 class="section-title">Works With Your Devices</h2>
+            <p class="section-subtitle">Compatible with leading health monitoring devices</p>
+            
+            <div class="devices-grid">
+                <div class="device-card">
+                    <div class="device-icon">🩸</div>
+                    <div class="device-name">Blood Pressure Monitor</div>
+                    <div class="device-desc">Track your blood pressure readings in real-time with instant alerts for high readings.</div>
+                </div>
+                
+                <div class="device-card">
+                    <div class="device-icon">🩺</div>
+                    <div class="device-name">Glucose Monitor</div>
+                    <div class="device-desc">Monitor your blood sugar levels continuously with detailed tracking and reports.</div>
+                </div>
+                
+                <div class="device-card">
+                    <div class="device-icon">⏱️</div>
+                    <div class="device-name">Smart Scale</div>
+                    <div class="device-desc">Track your weight and wellness metrics with automatic syncing and trend analysis.</div>
+                </div>
+                
+                <div class="device-card">
+                    <div class="device-icon">⌚</div>
+                    <div class="device-name">Smartwatch</div>
+                    <div class="device-desc">Monitor heart rate, activity, and sleep patterns throughout the day and night.</div>
+                </div>
+                
+                <div class="device-card">
+                    <div class="device-icon">🌡️</div>
+                    <div class="device-name">Thermometer</div>
+                    <div class="device-desc">Quick temperature checks with automatic history tracking and fever alerts.</div>
+                </div>
+                
+                <div class="device-card">
+                    <div class="device-icon">😴</div>
+                    <div class="device-name">Sleep Tracker</div>
+                    <div class="device-desc">Analyze your sleep quality and get personalized recommendations for better rest.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- DASHBOARD PREVIEW SECTION -->
+    <section class="section" id="dashboard">
+        <div class="container">
+            <h2 class="section-title">Patient Dashboard Features</h2>
+            <p class="section-subtitle">Everything at your fingertips</p>
+            
+            <div class="dashboard-preview">
+                <div class="dashboard-title">📊 Your Dashboard Overview</div>
+                
+                <div class="metrics-row">
+                    <div class="metric-card">
+                        <div class="metric-number">1</div>
+                        <div class="metric-label">Upcoming Appointment</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number">3</div>
+                        <div class="metric-label">Active Devices</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number">0</div>
+                        <div class="metric-label">Support Tickets</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number">99.9%</div>
+                        <div class="metric-label">System Uptime</div>
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 18px; margin-bottom: 16px; color: var(--text-dark); font-weight: 600;">Key Features Included:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div style="padding: 16px; background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">📅 Upcoming Appointments</div>
+                        <div style="font-size: 13px; color: var(--text-light);">Schedule and manage all your healthcare appointments in one place</div>
+                    </div>
+                    
+                    <div style="padding: 16px; background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">📱 Device Connectivity</div>
+                        <div style="font-size: 13px; color: var(--text-light);">Real-time status of all your connected health devices</div>
+                    </div>
+                    
+                    <div style="padding: 16px; background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">📹 Video Support</div>
+                        <div style="font-size: 13px; color: var(--text-light);">One-click telehealth sessions with screen sharing</div>
+                    </div>
+                    
+                    <div style="padding: 16px; background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">🎫 Support Tickets</div>
+                        <div style="font-size: 13px; color: var(--text-light);">Track and manage all your support requests</div>
+                    </div>
+                    
+                    <div style="padding: 16px; background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">🔧 Quick Support</div>
+                        <div style="font-size: 13px; color: var(--text-light);">5 support request options for all your needs</div>
+                    </div>
+                    
+                    <div style="padding: 16px; background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">👥 Caregiver Support</div>
+                        <div style="font-size: 13px; color: var(--text-light);">Invite caregivers to help manage your health</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Users Say</h2>
+            <p class="section-subtitle">Real stories from real patients</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"This app changed my life. Managing my health has never been easier. I can monitor all my devices in one place and my doctors can access my data instantly."</p>
+                    <div class="testimonial-author">— John S., Patient</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"The support team is amazing. They helped me set up all my devices and answered every question I had. The video support feature is a game-changer!"</p>
+                    <div class="testimonial-author">— Maria G., Patient</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"I love how easy it is to share my health data with my doctor. It's made my appointments much more productive. Highly recommended!"</p>
+                    <div class="testimonial-author">— Dr. Robert M., Healthcare Provider</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Blueprint Health gives me peace of mind. I can monitor my elderly mother's health from anywhere, and the alerts keep me informed about any concerns."</p>
+                    <div class="testimonial-author">— Sarah T., Caregiver</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"The security and privacy features are excellent. I feel confident sharing my sensitive health information with this platform."</p>
+                    <div class="testimonial-author">— James P., Patient</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Our clinic has improved patient outcomes significantly since implementing Blueprint Health. It's a fantastic platform!"</p>
+                    <div class="testimonial-author">— Dr. Emily L., Clinic Director</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA SECTION -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2 class="cta-title">Ready to Transform Your Health?</h2>
+            <p class="cta-subtitle">Join thousands of patients already using Blueprint Health to manage their wellness</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-large btn-primary" style="background: white; color: var(--primary);">Start Free Trial</button>
+                <button class="btn btn-large btn-secondary" style="border-color: white; color: white;">Schedule a Demo</button>
+            </div>
+            <p style="margin-top: 24px; opacity: 0.9; font-size: 14px;">No credit card required • 30-day free trial • Cancel anytime</p>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Blueprint Health</h3>
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 16px;">Smart healthcare management for everyone.</p>
+                <p style="font-size: 13px; color: rgba(255,255,255,0.7);">© 2024 Blueprint Healthcare Solutions. All rights reserved.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Product</h3>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#devices">Supported Devices</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">HIPAA Compliance</a></li>
+                    <li><a href="#">Security</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Blueprint Healthcare Solutions - Connecting Patients, Providers, and Technology Through Expert Telehealth & Health-IT Support.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Button interactions
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.includes('Sign Up') || this.textContent.includes('Free Trial')) {
+                    alert('Redirecting to sign up...');
+                } else if (this.textContent.includes('Demo')) {
+                    alert('Scheduling a demo. Please wait...');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
