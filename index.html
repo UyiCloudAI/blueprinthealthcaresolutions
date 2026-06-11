@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blueprint Healthcare Solutions - Smart Health Management Platform</title>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
         * {
             margin: 0;
@@ -27,174 +26,6 @@
             line-height: 1.6;
             color: var(--text-dark);
             background: var(--bg-light);
-        }
-        
-        /* MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            animation: fadeIn 0.3s;
-        }
-        
-        .modal-content {
-            background-color: var(--white);
-            margin: 5% auto;
-            padding: 40px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            animation: slideIn 0.3s;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .close {
-            color: var(--text-light);
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .close:hover {
-            color: var(--text-dark);
-        }
-        
-        .modal h2 {
-            margin-bottom: 24px;
-            color: var(--text-dark);
-            text-align: center;
-        }
-        
-        .auth-options {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        
-        .auth-divider {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 20px 0;
-            color: var(--text-light);
-        }
-        
-        .auth-divider::before,
-        .auth-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border-color);
-        }
-        
-        .demo-btn {
-            padding: 12px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .demo-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-        
-        .google-signin-wrapper {
-            display: flex;
-            justify-content: center;
-        }
-        
-        .user-profile {
-            display: none;
-            position: absolute;
-            right: 20px;
-            top: 65px;
-            background: var(--white);
-            border-radius: 8px;
-            padding: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            z-index: 999;
-            min-width: 250px;
-            border: 1px solid var(--border-color);
-        }
-        
-        .user-profile.active {
-            display: block;
-        }
-        
-        .user-info {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 16px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .user-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        
-        .user-details h3 {
-            margin: 0;
-            font-size: 14px;
-            color: var(--text-dark);
-        }
-        
-        .user-details p {
-            margin: 0;
-            font-size: 12px;
-            color: var(--text-light);
-        }
-        
-        .user-badge {
-            font-size: 11px;
-            background: var(--primary);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            margin-top: 8px;
-            display: inline-block;
-        }
-        
-        .logout-btn {
-            width: 100%;
-            padding: 8px;
-            background: #ef4444;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        
-        .logout-btn:hover {
-            background: #dc2626;
         }
         
         /* NAVIGATION */
@@ -259,7 +90,6 @@
         .nav-buttons {
             display: flex;
             gap: 12px;
-            position: relative;
         }
         
         .btn {
@@ -291,24 +121,6 @@
         
         .btn-secondary:hover {
             background: var(--bg-light);
-        }
-        
-        .user-btn {
-            padding: 8px 16px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-weight: 700;
-        }
-        
-        .user-btn:hover {
-            background: var(--primary-dark);
         }
         
         /* HERO SECTION */
@@ -559,6 +371,26 @@
             font-weight: 500;
         }
         
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 40px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .cta-subtitle {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+        
         /* FOOTER */
         footer {
             background: var(--text-dark);
@@ -628,6 +460,10 @@
                 grid-template-columns: 1fr;
             }
             
+            .cta-title {
+                font-size: 28px;
+            }
+            
             .dashboard-preview {
                 padding: 24px;
             }
@@ -635,50 +471,6 @@
     </style>
 </head>
 <body>
-    <!-- LOGIN MODAL -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeLoginModal()">&times;</span>
-            <h2>Sign In to Blueprint Health</h2>
-            
-            <div class="auth-options">
-                <!-- Google Sign-In -->
-                <div id="googleAuthWrapper">
-                    <div class="google-signin-wrapper">
-                        <div id="g_id_onload"
-                             data-client_id="YOUR_GOOGLE_CLIENT_ID_HERE"
-                             data-callback="handleCredentialResponse">
-                        </div>
-                        <div class="g_id_signin" data-type="standard"></div>
-                    </div>
-                </div>
-                
-                <!-- Demo Login Option -->
-                <div class="auth-divider">Or try demo</div>
-                <button class="demo-btn" onclick="loginWithDemo()">
-                    👤 Continue as Demo User
-                </button>
-            </div>
-            
-            <p style="text-align: center; margin-top: 20px; font-size: 12px; color: var(--text-light);">
-                ✅ Data stored securely on this device only
-            </p>
-        </div>
-    </div>
-
-    <!-- USER PROFILE DROPDOWN -->
-    <div id="userProfile" class="user-profile">
-        <div class="user-info">
-            <img id="userAvatar" class="user-avatar" src="" alt="User Avatar">
-            <div class="user-details">
-                <h3 id="userName">User Name</h3>
-                <p id="userEmail">email@example.com</p>
-                <span class="user-badge" id="authBadge">Demo</span>
-            </div>
-        </div>
-        <button class="logout-btn" onclick="logout()">Logout</button>
-    </div>
-
     <!-- NAVIGATION -->
     <nav>
         <div class="nav-container">
@@ -691,13 +483,11 @@
                 <li><a href="#devices">Devices</a></li>
                 <li><a href="#dashboard">Dashboard</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-buttons">
-                <button id="loginBtn" class="btn btn-secondary" onclick="openLoginModal()">Login</button>
-                <button class="btn btn-primary" onclick="openLoginModal()">Sign Up</button>
-                <div id="userBtnContainer" style="display: none;">
-                    <button class="user-btn" onclick="toggleUserProfile()" id="userInitial">U</button>
-                </div>
+                <button class="btn btn-secondary">Login</button>
+                <button class="btn btn-primary">Sign Up</button>
             </div>
         </div>
     </nav>
@@ -709,8 +499,7 @@
             <h1>Your Health, Simplified</h1>
             <p class="hero-subtitle">Monitor devices, connect with doctors, manage your health—all in one app. Blueprint Healthcare Solutions brings healthcare to your fingertips.</p>
             <div class="hero-buttons">
-                <button class="btn btn-large btn-primary" onclick="openLoginModal()">Sign Up Free</button>
-                <button class="btn btn-large btn-secondary">See Demo</button>
+                <button class="btn btn-large btn-primary">Sign Up Free</button>
             </div>
         </div>
     </section>
@@ -917,6 +706,19 @@
         </div>
     </section>
     
+    <!-- CTA SECTION -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2 class="cta-title">Ready to Transform Your Health?</h2>
+            <p class="cta-subtitle">Join thousands of patients already using Blueprint Health to manage their wellness</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-large btn-primary" style="background: white; color: var(--primary);">Start Free Trial</button>
+                <button class="btn btn-large btn-secondary" style="border-color: white; color: white;">Schedule a Demo</button>
+            </div>
+            <p style="margin-top: 24px; opacity: 0.9; font-size: 14px;">No credit card required • 30-day free trial • Cancel anytime</p>
+        </div>
+    </section>
+    
     <!-- FOOTER -->
     <footer>
         <div class="footer-container">
@@ -963,135 +765,6 @@
     </footer>
     
     <script>
-        // Demo user data
-        const demoUsers = [
-            {
-                name: 'Sarah Johnson',
-                email: 'sarah.johnson@email.com',
-                picture: 'https://ui-avatars.com/api/?name=Sarah+Johnson&background=1dd1a1&color=fff&size=200'
-            },
-            {
-                name: 'Michael Chen',
-                email: 'michael.chen@email.com',
-                picture: 'https://ui-avatars.com/api/?name=Michael+Chen&background=1dd1a1&color=fff&size=200'
-            },
-            {
-                name: 'Emily Rodriguez',
-                email: 'emily.rodriguez@email.com',
-                picture: 'https://ui-avatars.com/api/?name=Emily+Rodriguez&background=1dd1a1&color=fff&size=200'
-            }
-        ];
-
-        // Check if user is logged in on page load
-        window.addEventListener('load', function() {
-            checkUserLogin();
-        });
-
-        // Handle real Google Sign-In
-        function handleCredentialResponse(response) {
-            try {
-                const base64Url = response.credential.split('.')[1];
-                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                }).join(''));
-                
-                const userInfo = JSON.parse(jsonPayload);
-                
-                // Store user info in localStorage with auth type
-                localStorage.setItem('user', JSON.stringify({
-                    name: userInfo.name,
-                    email: userInfo.email,
-                    picture: userInfo.picture,
-                    authType: 'google'
-                }));
-                
-                updateUserUI(userInfo, 'google');
-                closeLoginModal();
-            } catch (error) {
-                console.log('Google auth error, falling back to demo');
-                loginWithDemo();
-            }
-        }
-
-        // Demo login function
-        function loginWithDemo() {
-            const demoUser = demoUsers[Math.floor(Math.random() * demoUsers.length)];
-            
-            localStorage.setItem('user', JSON.stringify({
-                name: demoUser.name,
-                email: demoUser.email,
-                picture: demoUser.picture,
-                authType: 'demo'
-            }));
-            
-            updateUserUI(demoUser, 'demo');
-            closeLoginModal();
-        }
-
-        function updateUserUI(userInfo, authType = 'demo') {
-            // Hide login button, show user profile button
-            document.getElementById('loginBtn').style.display = 'none';
-            document.getElementById('userBtnContainer').style.display = 'block';
-            
-            // Update user profile
-            document.getElementById('userName').textContent = userInfo.name;
-            document.getElementById('userEmail').textContent = userInfo.email;
-            document.getElementById('userAvatar').src = userInfo.picture;
-            document.getElementById('userInitial').textContent = userInfo.name.charAt(0).toUpperCase();
-            
-            // Update auth badge
-            const badge = document.getElementById('authBadge');
-            if (authType === 'google') {
-                badge.textContent = '🔐 Google';
-                badge.style.background = '#4285F4';
-            } else {
-                badge.textContent = '👤 Demo';
-                badge.style.background = 'var(--primary)';
-            }
-        }
-
-        function checkUserLogin() {
-            const user = localStorage.getItem('user');
-            if (user) {
-                const userInfo = JSON.parse(user);
-                updateUserUI(userInfo, userInfo.authType || 'demo');
-            }
-        }
-
-        function openLoginModal() {
-            document.getElementById('loginModal').style.display = 'block';
-        }
-
-        function closeLoginModal() {
-            document.getElementById('loginModal').style.display = 'none';
-        }
-
-        function toggleUserProfile() {
-            const profile = document.getElementById('userProfile');
-            profile.classList.toggle('active');
-        }
-
-        function logout() {
-            localStorage.removeItem('user');
-            document.getElementById('loginBtn').style.display = 'block';
-            document.getElementById('userBtnContainer').style.display = 'none';
-            document.getElementById('userProfile').classList.remove('active');
-            alert('Logged out successfully!');
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('loginModal');
-            const userProfile = document.getElementById('userProfile');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-            if (!event.target.closest('.user-btn') && !event.target.closest('.user-profile')) {
-                userProfile.classList.remove('active');
-            }
-        }
-
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1099,6 +772,17 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Button interactions
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.includes('Sign Up') || this.textContent.includes('Free Trial')) {
+                    alert('Redirecting to sign up...');
+                } else if (this.textContent.includes('Demo')) {
+                    alert('Scheduling a demo. Please wait...');
                 }
             });
         });
