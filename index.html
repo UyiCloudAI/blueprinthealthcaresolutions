@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telehealth Tech Solutions</title>
+<meta name="description" content="Enterprise Healthcare Technology, Telehealth, RPM, Health-IT Consulting and Medical Equipment Integration">
+<style>
+body{font-family:Arial,sans-serif;margin:0;line-height:1.6;color:#243447}
+header{background:#0f766e;color:white;padding:20px;position:sticky;top:0}
+nav a{color:white;margin:0 12px;text-decoration:none}
+.hero{background:linear-gradient(135deg,#14b8a6,#0f766e);color:white;padding:100px 20px;text-align:center}
+section{padding:60px 20px;max-width:1200px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{border:1px solid #ddd;padding:20px;border-radius:10px}
+footer{background:#243447;color:white;padding:30px;text-align:center}
+input,textarea{width:100%;padding:12px;margin:8px 0}
+button{padding:12px 20px;background:#0f766e;color:white;border:none}
+</style>
+</head>
+<body>
+<header>
+<h2>Telehealth Tech Solutions</h2>
+<nav>
+<a href="#services">Services</a>
+<a href="#telehealth">Telehealth</a>
+<a href="#rpm">RPM</a>
+<a href="#consulting">Health‑IT</a>
+<a href="#hipaa">HIPAA</a>
+<a href="#contact">Contact</a>
+<a href="/app.html" style="background:white;color:#0f766e;padding:8px 14px;border-radius:6px;font-weight:bold">Patient Portal</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Modern Healthcare Technology Solutions</h1>
+<p>Telehealth • Remote Patient Monitoring • Medical Equipment Integration • Health‑IT Consulting</p>
+<p><a href="/app.html" style="display:inline-block;margin-top:10px;background:white;color:#0f766e;padding:12px 24px;border-radius:6px;font-weight:bold;text-decoration:none">Sign in or book a video visit</a></p>
+</section>
+
+<section id="services">
+<h2>Services</h2>
+<div class="grid">
+<div class="card"><h3>Telehealth</h3><p>Virtual care deployment and support.</p></div>
+<div class="card"><h3>RPM</h3><p>Remote patient monitoring solutions.</p></div>
+<div class="card"><h3>Medical Equipment Integration</h3><p>Device deployment and connectivity.</p></div>
+<div class="card"><h3>Health‑IT Consulting</h3><p>Healthcare technology strategy and implementation.</p></div>
+</div>
+</section>
+
+<section id="telehealth"><h2>Telehealth Services</h2><p>Enterprise telehealth solutions for providers and patients.</p></section>
+<section id="rpm"><h2>Remote Patient Monitoring</h2><p>Connected care and analytics.</p></section>
+<section id="consulting"><h2>Health‑IT Consulting</h2><p>Digital transformation, EHR, infrastructure and workflow optimization.</p></section>
+<section id="hipaa"><h2>HIPAA Compliance</h2><p>Security, privacy and compliance focused healthcare technology services.</p></section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<form id="contact-form">
+<!-- Get a free access key at https://web3forms.com by entering info@telehealthtechsolutions.com, then paste it below -->
+<input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+<input type="hidden" name="subject" value="New website inquiry - Telehealth Tech Solutions">
+<input type="hidden" name="from_name" value="Telehealth Tech Solutions Website">
+<!-- Spam trap: leave empty -->
+<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="tel" name="phone" placeholder="Phone number">
+<textarea name="message" rows="6" placeholder="Message" required></textarea>
+<p style="font-size:14px;color:#555">Please do not include medical or personal health information in this form.</p>
+<button type="submit" id="submit-btn">Submit</button>
+<p id="form-status" role="status" style="margin-top:12px;font-weight:bold"></p>
+</form>
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const form = e.target, btn = document.getElementById('submit-btn'), status = document.getElementById('form-status');
+  btn.disabled = true; btn.textContent = 'Sending...'; status.textContent = '';
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    });
+    const data = await res.json();
+    if (data.success) {
+      status.style.color = '#0f766e';
+      status.textContent = 'Thank you! Your message was sent. We will contact you soon.';
+      form.reset();
+    } else { throw new Error(data.message); }
+  } catch (err) {
+    status.style.color = '#b91c1c';
+    status.textContent = 'Sorry, something went wrong. Please email info@telehealthtechsolutions.com directly.';
+  }
+  btn.disabled = false; btn.textContent = 'Submit';
+});
+</script>
+</section>
+
+<footer>
+<p>© 2026 Telehealth Tech Solutions</p>
+</footer>
+</body>
+</html>

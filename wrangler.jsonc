@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "telehealthtechsolutions",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    // Only /api/* runs the Worker first; everything else is served as static files.
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "telehealth",
+      // Run `npx wrangler d1 create telehealth` and paste the database_id it prints here.
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    // Demo mode lets you join a video visit at any time and book slots with no lead time.
+    // Set to "false" before using this with real patients.
+    "DEMO_MODE": "true",
+    // Clinic hours are generated in this timezone (Mon-Fri, 9:00-17:00, 30-minute slots).
+    "CLINIC_TZ": "America/Los_Angeles"
+  }
+  // Secrets (set with `npx wrangler secret put NAME`, never commit them):
+  //   DAILY_API_KEY          Daily.co API key
+  //   DAILY_DOMAIN           your Daily subdomain, e.g. "telehealthtech" for telehealthtech.daily.co
+  //   PROVIDER_INVITE_CODE   code a clinician must enter to register as a provider
+}

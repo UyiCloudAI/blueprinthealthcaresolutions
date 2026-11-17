@@ -1,0 +1,13 @@
+name = "telehealthtechsolutions"
+main = "src/index.ts"
+compatibility_date = "2026-10-16"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# Create a D1 database and replace the placeholder values before enabling it.
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "telehealthtechsolutions"
+# database_id = "REPLACE_WITH_REAL_DATABASE_ID"
